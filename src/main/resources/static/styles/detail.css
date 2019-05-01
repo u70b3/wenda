@@ -213,6 +213,9 @@ body.zhi {
     padding-top:46px;
     _padding-top:64px;
     -webkit-font-smoothing:subpixel-antialiased
+
+    line-height: 30px;
+    font-size: 15px;
 }
 html.in-app body.zhi {
     background-color:#fff;
@@ -2477,30 +2480,8 @@ textarea.Input {
     height:100px;
     border-radius:4px
 }
-.avatar.\34 0 {
-    width:40px;
-    height:40px;
-    border-radius:4px
-}
-.avatar.\35 0 {
-    width:50px;
-    height:50px;
-    border-radius:4px
-}
-.avatar.\36 0 {
-    width:60px;
-    height:60px;
-    border-radius:4px
-}
-.Spinner {
-    display:inline-block;
-    width:14px;
-    height:15px;
-    background-image:url(../images/img/spinner/grey-loading.b016b1c7.gif)
-}
-.Spinner--light {
-    background-image:url(../images/img/spinner/lightgray-loading.e0eefd9c.gif)
-}
+
+
 .Sorter {
     overflow:hidden;
     height:24px;

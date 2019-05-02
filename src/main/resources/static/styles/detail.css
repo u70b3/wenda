@@ -1338,7 +1338,8 @@ html.no-touchevents a:hover>.icon-ignore {
     width:7px;
     height:7px;
     vertical-align:0;
-    background-position:0 -204px
+    background-position:0 -204px;
+    display: initial;
 }
 .icon-close-circle {
     background-position:-247px -146px

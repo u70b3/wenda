@@ -10,10 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,15 +52,19 @@ public class HomeController {
 
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model,
-                        @RequestParam(value = "pop", defaultValue = "0") int pop) {
-        model.addAttribute("vos", getQuestions(0, 0, 1000));
-
+                        @RequestParam(value = "pop", defaultValue = "0") int pop,
+                        @RequestParam(value = "offset" , defaultValue = "0") int offset
+    )
+    {
+        int limit=10;
+        model.addAttribute("vos", getQuestions(0, offset, limit));
+        model.addAttribute("now",offset+limit);
         return "index";
     }
 
     @RequestMapping(path = {"/user/{userId}"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String userIndex(Model model, @PathVariable("userId") int userId) {
-        model.addAttribute("vos", getQuestions(userId, 0, 100));
+        model.addAttribute("vos", getQuestions(userId, 0, 1000));
 
         User user = userService.getUser(userId);
         ViewObject vo = new ViewObject();

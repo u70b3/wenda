@@ -24,7 +24,7 @@ public class SearchService {
 
     public List<Question> searchQuestion(String keyword, int offset, int count,
                                          String hlPre, String hlPos) throws Exception {
-        List<Question> questionList = new ArrayList<Question>();
+        List<Question> questionList = new ArrayList<>();
         SolrQuery query = new SolrQuery(keyword);
         query.setRows(count);
         query.setStart(offset);

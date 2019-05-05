@@ -1,5 +1,6 @@
 package com.lbs.dao;
 
+import ch.qos.logback.classic.db.names.TableName;
 import com.lbs.model.Message;
 import org.apache.ibatis.annotations.*;
 
@@ -32,4 +33,7 @@ public interface MessageDAO {
 
     @Select({"select count(id) from ", TABLE_NAME, " where has_read=0 and to_id=#{userId} and conversation_id=#{conversationId}"})
     int getConversationUnreadCount(@Param("userId") int userId, @Param("conversationId") String conversationId);
+
+    @Update({"update ", TABLE_NAME, " set has_read = 1 ", " where to_id=#{userId} and conversation_id=#{conversationId}"})
+    void changeHasRead(@Param("userId") int userId, @Param("conversationId") String conversationId);
 }

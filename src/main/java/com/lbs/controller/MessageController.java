@@ -58,10 +58,14 @@ public class MessageController {
     }
 
     @RequestMapping(path = {"/msg/detail"}, method = {RequestMethod.GET})
-    public String getConversationDetail(Model model, @RequestParam("conversationId") String conversationId) {
+    public String getConversationDetail(Model model,
+                                        @RequestParam("conversationId") String conversationId,
+                                        @RequestParam("userId") int userId
+    ) {
         try {
             List<Message> messageList = messageService.getConversationDetail(conversationId, 0, 10);
-            List<ViewObject> messages = new ArrayList<ViewObject>();
+            messageService.changeHasRead(userId,conversationId);
+            List<ViewObject> messages = new ArrayList<>();
             for (Message message : messageList) {
                 ViewObject vo = new ViewObject();
                 vo.set("message", message);

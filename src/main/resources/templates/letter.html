@@ -7,7 +7,7 @@
             <ul class="letter-list">
                 #foreach($conversation in $conversations)
                 <li id="conversation-item-10005_622873">
-                    <a class="letter-link" href="/msg/detail?conversationId=$conversation.message.conversationId"></a>
+                    <a class="letter-link" href="/msg/detail?userId=$user.getId()&conversationId=$conversation.message.conversationId"></a>
                     <div class="letter-info">
                         <span class="l-time">$data.format('yyyy-MM-dd HH:mm:ss', $conversation.message.createdDate)</span>
                         <div class="l-operate-bar">

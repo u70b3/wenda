@@ -41,8 +41,6 @@ public class MessageService {
         return messageDAO.getConversationUnreadCount(userId, conversationId);
     }
     public void changeHasRead(int userId,String conversationId){
-
         messageDAO.changeHasRead(userId, conversationId);
-
     }
 }

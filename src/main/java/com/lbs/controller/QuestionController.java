@@ -107,9 +107,11 @@ public class QuestionController {
                 question.setUserId(hostHolder.getUser().getId());
             }
             if (questionService.addQuestion(question) > 0) {
-                eventProducer.fireEvent(new EventModel(EventType.ADD_QUESTION)
+                        eventProducer
+                        .fireEvent(new EventModel(EventType.ADD_QUESTION)
                         .setActorId(question.getUserId()).setEntityId(question.getId())
-                .setExt("title", question.getTitle()).setExt("content", question.getContent()));
+                        .setExt("title", question.getTitle())
+                        .setExt("content", question.getContent()));
                 return WendaUtil.getJSONString(0);
             }
         } catch (Exception e) {
@@ -117,5 +119,4 @@ public class QuestionController {
         }
         return WendaUtil.getJSONString(1, "失败");
     }
-
 }

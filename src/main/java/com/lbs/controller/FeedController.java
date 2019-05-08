@@ -51,17 +51,16 @@ public class FeedController {
 
     @RequestMapping(path = {"/pullfeeds"}, method = {RequestMethod.GET, RequestMethod.POST})
     private String getPullFeeds(Model model) {
-//        logger.error("拉成功了");
         int localUserId = hostHolder.getUser() != null ? hostHolder.getUser().getId() : 0;
         List<Integer> followees = new ArrayList<>();
-
+        List<Feed> feeds =new ArrayList<>();
         if (localUserId != 0) {
-            // 关注的人
             followees = followService.getFollowees(localUserId, EntityType.ENTITY_USER, Integer.MAX_VALUE);
+            if (!followees.isEmpty())
+                feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
+        }else {
+            feeds=null;
         }
-
-        List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
-//        logger.error(Integer.toString(feeds.size()));
         model.addAttribute("feeds", feeds);
         return "feeds";
     }

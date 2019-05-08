@@ -37,8 +37,8 @@ public class FeedHandler implements EventHandler {
     private static final Logger logger = LoggerFactory.getLogger(FeedHandler.class);
 
     private String buildFeedData(EventModel model) {
-        Map<String, String> map = new HashMap<String ,String>();
-        // 触发用户是通用的
+        Map<String, String> map = new HashMap<>();
+        /* 触发用户是通用的 */
         User actor = userService.getUser(model.getActorId());
         if (actor == null) {
             return null;
@@ -70,6 +70,7 @@ public class FeedHandler implements EventHandler {
         feed.setCreatedDate(new Date());
         feed.setType(model.getType().getValue());
         feed.setUserId(model.getActorId());
+        //发现列表的实际功能
         feed.setData(buildFeedData(model));
         if (feed.getData() == null) {
             // 不支持的feed
@@ -92,6 +93,6 @@ public class FeedHandler implements EventHandler {
 
     @Override
     public List<EventType> getSupportEventTypes() {
-        return Arrays.asList(new EventType[]{EventType.COMMENT, EventType.FOLLOW});
+        return Arrays.asList(EventType.COMMENT, EventType.FOLLOW);
     }
 }

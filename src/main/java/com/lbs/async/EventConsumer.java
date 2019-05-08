@@ -1,6 +1,7 @@
 package com.lbs.async;
 
 import com.alibaba.fastjson.JSON;
+import com.lbs.async.handler.EventHandler;
 import com.lbs.util.JedisAdapter;
 import com.lbs.util.RedisKeyUtil;
 import org.slf4j.Logger;

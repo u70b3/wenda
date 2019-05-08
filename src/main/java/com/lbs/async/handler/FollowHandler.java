@@ -1,6 +1,5 @@
 package com.lbs.async.handler;
 
-import com.lbs.async.EventHandler;
 import com.lbs.async.EventModel;
 import com.lbs.async.EventType;
 import com.lbs.model.EntityType;

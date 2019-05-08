@@ -1,7 +1,6 @@
 package com.lbs.async.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lbs.async.EventHandler;
 import com.lbs.async.EventModel;
 import com.lbs.async.EventType;
 import com.lbs.model.*;
@@ -66,7 +65,6 @@ public class FeedHandler implements EventHandler {
         // 为了测试，把model的userId随机一下
 //        Random r = new Random();
 //        model.setActorId(1+r.nextInt(10));
-
         // 构造一个新鲜事
         Feed feed = new Feed();
         feed.setCreatedDate(new Date());

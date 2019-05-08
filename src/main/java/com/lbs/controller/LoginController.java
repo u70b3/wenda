@@ -29,7 +29,7 @@ public class LoginController {
     @Autowired
     EventProducer eventProducer;
 
-    @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/reg"}, method = {RequestMethod.POST})
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
                       @RequestParam("next") String next,
@@ -83,7 +83,7 @@ public class LoginController {
                 response.addCookie(cookie);
 
                 eventProducer.fireEvent(new EventModel(EventType.LOGIN)
-                        .setExt("username", username).setExt("email", "zjuyxy@qq.com")
+                        .setExt("username", username).setExt("email", "lbs1019@qq.com")
                         .setActorId((int)map.get("userId")));
 
                 if (StringUtils.isNotBlank(next)) {

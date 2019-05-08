@@ -55,7 +55,10 @@ public class FeedController {
         List<Integer> followees = new ArrayList<>();
         List<Feed> feeds =new ArrayList<>();
         if (localUserId != 0) {
-            followees = followService.getFollowees(localUserId, EntityType.ENTITY_USER, Integer.MAX_VALUE);
+            followees = followService.getFollowees(
+                    localUserId,
+                    EntityType.ENTITY_USER,
+                    Integer.MAX_VALUE);
             if (!followees.isEmpty())
                 feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
         }else {

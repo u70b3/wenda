@@ -110,9 +110,7 @@ public class SensitiveService implements InitializingBean {
                 ++position;
                 continue;
             }
-
             tempNode = tempNode.getSubNode(c);
-
             // 当前位置的匹配结束
             if (tempNode == null) {
                 // 以begin开始的字符串不存在敏感词
@@ -140,23 +138,17 @@ public class SensitiveService implements InitializingBean {
 
     private void addWord(String lineTxt) {
         TrieNode tempNode = rootNode;
-        // 循环每个字节
         for (int i = 0; i < lineTxt.length(); ++i) {
             Character c = lineTxt.charAt(i);
-            // 过滤空格
             if (isSymbol(c)) {
                 continue;
             }
             TrieNode node = tempNode.getSubNode(c);
-
             if (node == null) {
-                // 没初始化
                 node = new TrieNode();
                 tempNode.addSubNode(c, node);
             }
-
             tempNode = node;
-
             if (i == lineTxt.length() - 1) {
                 // 关键词结束， 设置结束标志
                 tempNode.setKeywordEnd(true);
